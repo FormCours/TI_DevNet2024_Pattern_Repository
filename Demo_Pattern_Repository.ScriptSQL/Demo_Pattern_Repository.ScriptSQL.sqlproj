@@ -57,6 +57,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Data" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Familia.sql" />
@@ -64,5 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Demo_Pattern_Repository.ScriptSQL.publish.xml" />
+    <None Include="Data\InitialData.sql" />
   </ItemGroup>
 </Project>
