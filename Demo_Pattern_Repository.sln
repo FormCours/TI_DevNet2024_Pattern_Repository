@@ -9,7 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo_Pattern_Repository.Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo_Pattern_Repository", "Demo_Pattern_Repository\Demo_Pattern_Repository.csproj", "{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository", "Demo_Pattern_Repository.Interfaces\Demo_Pattern_Repository.csproj", "{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository.DatabaseADO", "Demo_Pattern_Repository.DatabaseADO\Demo_Pattern_Repository.DatabaseADO.csproj", "{70C7ADF8-309A-4D7B-8A38-5B9A18089744}"
+EndProject
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
