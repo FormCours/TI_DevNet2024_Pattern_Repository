@@ -1,2 +1,45 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Demo_Pattern_Repository.Models;
+using Demo_Pattern_Repository.Repositories;
+
+using ADO = Demo_Pattern_Repository.DatabaseADO;
+using Dapper = Demo_Pattern_Repository.DatabaseDapper;
+
+/*
+IEnumerable<int> GetNumber(int limit)
+{
+    int value = 0;
+
+    while(value < limit)
+    {
+        yield return value++;
+    }
+}
+
+IEnumerable<int> res1 =  GetNumber(10);
+IEnumerable<int> res2 =  GetNumber(100);
+IEnumerable<int> res3 =  GetNumber(1_000);
+IEnumerable<int> res4 =  GetNumber(10_000);
+
+Console.WriteLine("Test");
+
+foreach(int val in res2)
+{
+    Console.WriteLine($" - {val}");
+}
+*/
+
+Console.WriteLine("Démo du pattern Repository");
+Console.WriteLine("**************************");
+Console.WriteLine();
+
+
+IFamiliaRepository familiaRepository = new ADO.FamiliaRepository();
+
+Console.WriteLine("Liste des familles");
+IEnumerable<Familia> result =  familiaRepository.GetAll();
+
+foreach (Familia familia in result)
+{
+    Console.WriteLine($"{familia.Id} : {familia.Name}");
+}
+Console.WriteLine();
