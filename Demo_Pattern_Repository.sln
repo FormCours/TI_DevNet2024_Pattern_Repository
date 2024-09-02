@@ -5,6 +5,10 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Demo_Pattern_Repository.ScriptSQL", "Demo_Pattern_Repository.ScriptSQL\Demo_Pattern_Repository.ScriptSQL.sqlproj", "{88CA9D0A-581A-4D46-831D-9D1206419EE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository.ConsoleApp", "Demo_Pattern_Repository.ConsoleApp\Demo_Pattern_Repository.ConsoleApp.csproj", "{078FCC6C-1992-4888-9670-0EC7075DB145}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository", "Demo_Pattern_Repository.Interfaces\Demo_Pattern_Repository.csproj", "{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +21,14 @@ Global
 		{88CA9D0A-581A-4D46-831D-9D1206419EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88CA9D0A-581A-4D46-831D-9D1206419EE2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88CA9D0A-581A-4D46-831D-9D1206419EE2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{078FCC6C-1992-4888-9670-0EC7075DB145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{078FCC6C-1992-4888-9670-0EC7075DB145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{078FCC6C-1992-4888-9670-0EC7075DB145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{078FCC6C-1992-4888-9670-0EC7075DB145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
