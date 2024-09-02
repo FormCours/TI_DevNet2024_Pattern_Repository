@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
@@ -11,6 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo_Pattern_Repository", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository.DatabaseADO", "Demo_Pattern_Repository.DatabaseADO\Demo_Pattern_Repository.DatabaseADO.csproj", "{70C7ADF8-309A-4D7B-8A38-5B9A18089744}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository.DatabaseDapper", "Demo_Pattern_Repository.DatabaseDapper\Demo_Pattern_Repository.DatabaseDapper.csproj", "{26F87D9F-8D9C-42E7-A974-50714836750C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +33,14 @@ Global
 		{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70C7ADF8-309A-4D7B-8A38-5B9A18089744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70C7ADF8-309A-4D7B-8A38-5B9A18089744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70C7ADF8-309A-4D7B-8A38-5B9A18089744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70C7ADF8-309A-4D7B-8A38-5B9A18089744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F87D9F-8D9C-42E7-A974-50714836750C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F87D9F-8D9C-42E7-A974-50714836750C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F87D9F-8D9C-42E7-A974-50714836750C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F87D9F-8D9C-42E7-A974-50714836750C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
