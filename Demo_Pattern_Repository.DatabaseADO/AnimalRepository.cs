@@ -1,4 +1,4 @@
-using Demo_Pattern_Repository.Models;
+﻿using Demo_Pattern_Repository.Models;
 using Demo_Pattern_Repository.Repositories;
 using Microsoft.Data.SqlClient;
 using System.Data;
@@ -82,6 +82,10 @@ namespace Demo_Pattern_Repository.DatabaseADO
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Animal> GetFromRegion(string region)
+        {
+            throw new NotImplementedException();
+        }
 
         public bool Remove(int id)
         {

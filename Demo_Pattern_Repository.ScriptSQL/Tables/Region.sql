@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Region]
+(
+	[Id] INT IDENTITY,
+	[Name] NVARCHAR(50) NOT NULL,
+
+	CONSTRAINT [PK_Region] PRIMARY KEY([Id]),
+	CONSTRAINT [UK_Region__Name] UNIQUE([Name])
+)

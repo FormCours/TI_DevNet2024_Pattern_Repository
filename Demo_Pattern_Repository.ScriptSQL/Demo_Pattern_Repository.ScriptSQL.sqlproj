@@ -62,6 +62,8 @@
   <ItemGroup>
     <Build Include="Tables\Familia.sql" />
     <Build Include="Tables\Animal.sql" />
+    <Build Include="Tables\Region.sql" />
+    <Build Include="Tables\Animal_Region.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Demo_Pattern_Repository.ScriptSQL.publish.xml" />

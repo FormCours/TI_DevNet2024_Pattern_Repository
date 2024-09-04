@@ -1,4 +1,4 @@
-namespace Demo_Pattern_Repository.Models
+﻿namespace Demo_Pattern_Repository.Models
 {
     public class Animal
     {
@@ -8,5 +8,6 @@ namespace Demo_Pattern_Repository.Models
         public int? LifeExpectancy { get; set; }
 
         public Familia Familia { get; set; } = null!;
+        public IEnumerable<Region> Regions { get; set; } = [];
     }
 }
