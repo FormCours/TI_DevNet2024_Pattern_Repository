@@ -34,7 +34,8 @@ Console.WriteLine();
 
 
 IFamiliaRepository familiaRepository = new ADO.FamiliaRepository();
-IAnimalRepository animalRepository = new DAP.AnimalRepository();
+IAnimalRepository animalRepository   = new ADO.AnimalRepository();
+IRegionRepository regionRepository   = new ADO.RegionRepository();
 
 //Console.WriteLine("Liste des familles");
 //IEnumerable<Familia> result =  familiaRepository.GetAll();
@@ -44,10 +45,14 @@ IAnimalRepository animalRepository = new DAP.AnimalRepository();
 //}
 //Console.WriteLine();
 
-Console.WriteLine("Liste des animaux");
-IEnumerable<Animal> animals = animalRepository.GetAll();
-foreach (Animal animal in animals)
-{
-    Console.WriteLine($"{animal.Id}) Nom: {animal.Name} / Famile: {animal.Familia.Name}");
-}
-Console.WriteLine();
+//Console.WriteLine("Liste des animaux");
+//IEnumerable<Animal> animals = animalRepository.GetAll();
+//foreach (Animal animal in animals)
+//{
+//    Console.WriteLine($"{animal.Id}) Nom: {animal.Name} / Famile: {animal.Familia.Name}");
+//}
+//Console.WriteLine();
+
+Console.WriteLine("Ajouter une région");
+Region r = regionRepository.Add(new Region() { Name = "Océanie" });
+Console.WriteLine($"> Region ajouter : {r.Id} {r.Name}");
