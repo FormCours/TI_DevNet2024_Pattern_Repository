@@ -2,7 +2,7 @@
 using Demo_Pattern_Repository.Repositories;
 
 using ADO = Demo_Pattern_Repository.DatabaseADO;
-using Dapper = Demo_Pattern_Repository.DatabaseDapper;
+using DAP = Demo_Pattern_Repository.DatabaseDapper;
 
 /*
 IEnumerable<int> GetNumber(int limit)
@@ -34,12 +34,20 @@ Console.WriteLine();
 
 
 IFamiliaRepository familiaRepository = new ADO.FamiliaRepository();
+IAnimalRepository animalRepository = new DAP.AnimalRepository();
 
-Console.WriteLine("Liste des familles");
-IEnumerable<Familia> result =  familiaRepository.GetAll();
+//Console.WriteLine("Liste des familles");
+//IEnumerable<Familia> result =  familiaRepository.GetAll();
+//foreach (Familia familia in result)
+//{
+//    Console.WriteLine($"{familia.Id} : {familia.Name}");
+//}
+//Console.WriteLine();
 
-foreach (Familia familia in result)
+Console.WriteLine("Liste des animaux");
+IEnumerable<Animal> animals = animalRepository.GetAll();
+foreach (Animal animal in animals)
 {
-    Console.WriteLine($"{familia.Id} : {familia.Name}");
+    Console.WriteLine($"{animal.Id}) Nom: {animal.Name} / Famile: {animal.Familia.Name}");
 }
 Console.WriteLine();

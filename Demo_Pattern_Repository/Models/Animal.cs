@@ -1,4 +1,4 @@
-﻿namespace Demo_Pattern_Repository.Models
+namespace Demo_Pattern_Repository.Models
 {
     public class Animal
     {
@@ -7,6 +7,6 @@
         public bool IsDomesticated { get; set; }
         public int? LifeExpectancy { get; set; }
 
-        public required Familia Familia { get; set; }
+        public Familia Familia { get; set; } = null!;
     }
 }
