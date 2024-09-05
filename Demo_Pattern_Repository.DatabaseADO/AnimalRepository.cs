@@ -25,6 +25,17 @@ namespace Demo_Pattern_Repository.DatabaseADO
             animal.Familia = familias.Single(f => f.Id == (int)record["familiaId"]);
             return animal;
         }
+        private Animal MapperWithFamilia(IDataRecord record)
+        {
+            Animal animal = Mapper(record);
+            animal.Familia = new Familia()
+            {
+                Id = (int)record["Familia.Id"],
+                Name = (string)record["Familia.Name"],
+                Desc = record["Familia.Desc"] is DBNull ? null : (string)record["Familia.Desc"]
+            };
+            return animal;
+        }
 
         public Animal Add(Animal animal)
         {
@@ -79,7 +90,37 @@ namespace Demo_Pattern_Repository.DatabaseADO
 
         public Animal? GetById(int id)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "SELECT [Animal].*, " +
+                                  " [Familia].[Id] AS [Familia.Id]," +
+                                  " [Familia].[Name] AS [Familia.Name], " +
+                                  " [Familia].[Description] AS [Familia.Desc] " +
+                                  "FROM [Animal] " +
+                                  " JOIN [Familia] ON [Animal].[FamiliaId] = [Familia].[Id]" +
+                                  "WHERE [Animal].[Id] = @Id";
+            command.Parameters.AddWithValue("Id", id);
+
+            Animal? animal = null;
+            connection.Open();
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                if(reader.Read())
+                {
+                    animal = MapperWithFamilia(reader);
+                }
+            }
+
+            connection.Close();
+
+            if(animal is not null)
+            {
+                animal.Regions = (new RegionRepository()).GetRegionOfAnimal(animal).ToList();
+            }
+
+            return animal;
         }
 
         public IEnumerable<Animal> GetFromRegion(string region)

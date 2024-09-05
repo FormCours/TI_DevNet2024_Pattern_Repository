@@ -49,7 +49,9 @@ IRegionRepository regionRepository   = new DAP.RegionRepository();
 //IEnumerable<Animal> animals = animalRepository.GetAll();
 //foreach (Animal animal in animals)
 //{
-//    Console.WriteLine($"{animal.Id}) Nom: {animal.Name} / Famile: {animal.Familia.Name}");
+//    Console.WriteLine($"{animal.Id}) Nom: {animal.Name}");
+//    Console.WriteLine($"Famile: {animal.Familia.Name}");
+//    Console.WriteLine($"Domestique: {animal.IsDomesticated}");
 //}
 //Console.WriteLine();
 
@@ -73,3 +75,16 @@ IRegionRepository regionRepository   = new DAP.RegionRepository();
 //}
 //Console.WriteLine();
 
+Console.WriteLine("Info d'un animal");
+Animal? animal = animalRepository.GetById(4);
+
+if (animal is not null)
+{
+    Console.WriteLine($"Nom : {animal.Name}");
+    Console.WriteLine($"Famille : {animal.Familia.Name}");
+    Console.WriteLine($"Region : {string.Join(", ", animal.Regions.Select(r => r.Name))}");
+}
+else
+{
+    Console.WriteLine("J'ai po trouvé !");
+}

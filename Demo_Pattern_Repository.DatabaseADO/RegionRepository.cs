@@ -59,5 +59,34 @@ namespace Demo_Pattern_Repository.DatabaseADO
             }
             connection.Close();
         }
+
+
+        public IEnumerable<Region> GetRegionOfAnimal(Animal animal)
+        {
+            return GetRegionOfAnimal(animal.Id);
+        }
+        public IEnumerable<Region> GetRegionOfAnimal(int animalId)
+        {
+            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "SELECT [Region].* " +
+                                  "FROM [Region] " +
+                                  " JOIN [Animal_Region] [AR] ON [AR].RegionId = Id " +
+                                  "WHERE [AR].AnimalId = @AnimalId";
+            command.Parameters.AddWithValue("AnimalId", animalId);
+
+            connection.Open();
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    yield return Mapper(reader);
+                }
+            }
+
+            connection.Close();
+        }
     }
 }

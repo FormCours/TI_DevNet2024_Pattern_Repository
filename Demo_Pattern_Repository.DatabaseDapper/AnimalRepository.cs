@@ -13,23 +13,17 @@ namespace Demo_Pattern_Repository.DatabaseDapper
         {
             using SqlConnection connection = new SqlConnection(connectionString);
 
-            connection.Open();
-            Animal animalInserted = connection.QuerySingle<Animal>(
+            return connection.QuerySingle<Animal>(
                 "INSERT INTO [Animal]([Name], [Domesticated], [LifeExpectancy], [FamiliaId])" +
                 " OUTPUT [inserted].*" +
                 " VALUES (@Name, @IsDomesticated, @LifeExpectancy, @FamiliaId)",
                 new { animal.Name, animal.IsDomesticated, animal.LifeExpectancy, FamiliaId = animal.Familia.Id }
             );
-            connection.Close();
-
-            return animalInserted;
         }
 
         public IEnumerable<Animal> GetAll()
         {
             using SqlConnection connection = new SqlConnection(connectionString);
-
-            connection.Open();
 
             IEnumerable<Animal> animals = connection.Query<Animal, Familia, Animal>(
                 "SELECT [Animal].[Id], [Animal].[Name], " +
@@ -49,7 +43,6 @@ namespace Demo_Pattern_Repository.DatabaseDapper
             {
                 yield return animal;
             }
-            connection.Close();
         }
 
         public IEnumerable<Animal> GetByFamilia(string familia)
@@ -59,14 +52,45 @@ namespace Demo_Pattern_Repository.DatabaseDapper
 
         public Animal? GetById(int id)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = new SqlConnection(connectionString);
+
+            string request = "SELECT [Animal].[Id], [Animal].[Name], " + 
+                              " [Animal].[Domesticated] AS [IsDomesticated], " + 
+                              " [Animal].[LifeExpectancy], [Animal].[FamiliaId], " + 
+                              " [Familia].[Id], [Familia].[Name], " +
+                              " [Familia].[Description] AS [Desc], " +
+                              " [Region].[Id], [Region].[Name] " +
+                              "FROM [Animal] " +
+                              " JOIN [Familia] ON [Animal].[FamiliaId] = [Familia].[Id] " +
+                              " JOIN [Animal_Region] [AR] ON [Animal].[Id] = [AR].[AnimalId] " +
+                              " JOIN [Region] ON [Region].[Id] = [AR].[RegionId] " +
+                              "WHERE [Animal].[Id] = @AnimalId";
+
+            IEnumerable<Animal> result = connection.Query<Animal, Familia, Region, Animal>(
+                request,
+                (animal, familia, region) =>
+                {
+                    animal.Familia = familia;
+                    animal.Regions = [ region ];
+                    return animal;
+                },
+                new { AnimalId = id});
+
+            Animal animal = result.GroupBy(a => a.Id)
+                                  .Select(grp =>
+                                  {
+                                      Animal a = grp.First();
+                                      a.Regions = grp.Select(g => g.Regions.Single()).ToList();
+                                      return a;
+                                  })
+                                  .Single();
+
+            return animal;
         }
 
         public IEnumerable<Animal> GetFromRegion(string region)
         {
             using SqlConnection connection = new SqlConnection(connectionString);
-
-            connection.Open();
 
             IEnumerable<Animal> animals = connection.Query<Animal, Familia, Animal>(
                 "SELECT [Animal].[Id], [Animal].[Name], " +
@@ -90,7 +114,6 @@ namespace Demo_Pattern_Repository.DatabaseDapper
             {
                 yield return animal;
             }
-            connection.Close();
         }
 
         public bool Remove(int id)
