@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo_Pattern_Repository.Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo_Pattern_Repository", "Demo_Pattern_Repository\Demo_Pattern_Repository.csproj", "{F82EDC99-C12F-431F-AF7D-EFEAE62B169E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository.DatabaseADO", "Demo_Pattern_Repository.DatabaseADO\Demo_Pattern_Repository.DatabaseADO.csproj", "{70C7ADF8-309A-4D7B-8A38-5B9A18089744}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo_Pattern_Repository.DatabaseADO", "Demo_Pattern_Repository.DatabaseADO\Demo_Pattern_Repository.DatabaseADO.csproj", "{70C7ADF8-309A-4D7B-8A38-5B9A18089744}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository.DatabaseDapper", "Demo_Pattern_Repository.DatabaseDapper\Demo_Pattern_Repository.DatabaseDapper.csproj", "{26F87D9F-8D9C-42E7-A974-50714836750C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo_Pattern_Repository.DatabaseDapper", "Demo_Pattern_Repository.DatabaseDapper\Demo_Pattern_Repository.DatabaseDapper.csproj", "{26F87D9F-8D9C-42E7-A974-50714836750C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_Pattern_Repository.DatabaseEFCore", "Demo_Pattern_Repository.DatabaseEFCore\Demo_Pattern_Repository.DatabaseEFCore.csproj", "{D3C2CC0B-3370-4577-8DA7-EFF88C32F290}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{26F87D9F-8D9C-42E7-A974-50714836750C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26F87D9F-8D9C-42E7-A974-50714836750C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26F87D9F-8D9C-42E7-A974-50714836750C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C2CC0B-3370-4577-8DA7-EFF88C32F290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C2CC0B-3370-4577-8DA7-EFF88C32F290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C2CC0B-3370-4577-8DA7-EFF88C32F290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C2CC0B-3370-4577-8DA7-EFF88C32F290}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,6 +8,6 @@
         public int? LifeExpectancy { get; set; }
 
         public Familia Familia { get; set; } = null!;
-        public IEnumerable<Region> Regions { get; set; } = [];
+        public IEnumerable<Region> Regions { get; set; }
     }
 }

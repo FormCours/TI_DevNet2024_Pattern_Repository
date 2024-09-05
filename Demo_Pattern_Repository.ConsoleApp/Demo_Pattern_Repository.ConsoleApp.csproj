@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Demo_Pattern_Repository.DatabaseADO\Demo_Pattern_Repository.DatabaseADO.csproj" />
     <ProjectReference Include="..\Demo_Pattern_Repository.DatabaseDapper\Demo_Pattern_Repository.DatabaseDapper.csproj" />
+    <ProjectReference Include="..\Demo_Pattern_Repository.DatabaseEFCore\Demo_Pattern_Repository.DatabaseEFCore.csproj" />
     <ProjectReference Include="..\Demo_Pattern_Repository\Demo_Pattern_Repository.csproj" />
   </ItemGroup>
 
