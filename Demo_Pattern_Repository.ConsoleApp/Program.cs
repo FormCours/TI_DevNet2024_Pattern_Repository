@@ -1,6 +1,6 @@
-using Demo_Pattern_Repository.Models;
+﻿using Demo_Pattern_Repository.Models;
 using Demo_Pattern_Repository.Repositories;
-
+using System.Diagnostics;
 using ADO = Demo_Pattern_Repository.DatabaseADO;
 using DAP = Demo_Pattern_Repository.DatabaseDapper;
 using EFC = Demo_Pattern_Repository.DatabaseEFCore;
@@ -117,3 +117,36 @@ Console.WriteLine();
 //    Console.WriteLine("J'ai po trouvé !");
 //}
 
+
+/****************************************************************/
+
+
+double PerfTest(int count, Action action)
+{
+    Stopwatch stopwatch = new Stopwatch();
+
+    stopwatch.Start();
+    for (int i = 0; i < count; i++)
+    {
+        action();
+    }
+    stopwatch.Stop();
+
+    return stopwatch.ElapsedTicks / (double)count;
+}
+
+Console.Write("Test performance (Push enter !)");
+Console.ReadLine();
+
+const int NB_TEST = 10_000;
+IAnimalRepository repTest1 = new ADO.AnimalRepository();
+IAnimalRepository repTest2 = new DAP.AnimalRepository();
+IAnimalRepository repTest3 = new EFC.AnimalRepository();
+
+double timer1 = PerfTest(NB_TEST, () => { repTest1.GetById(4); });
+double timer2 = PerfTest(NB_TEST, () => { repTest2.GetById(4); });
+double timer3 = PerfTest(NB_TEST, () => { repTest3.GetById(4); });
+
+Console.WriteLine($" - ADO     : {timer1}");
+Console.WriteLine($" - Dapper  : {timer2}");
+Console.WriteLine($" - EF Core : {timer3}");
