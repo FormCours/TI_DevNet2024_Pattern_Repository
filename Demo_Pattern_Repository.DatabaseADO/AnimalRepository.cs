@@ -84,7 +84,27 @@ namespace Demo_Pattern_Repository.DatabaseADO
 
         public IEnumerable<Animal> GetFromRegion(string region)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlCommand command = connection.CreateCommand();
+
+            IEnumerable<Familia> familias = (new FamiliaRepository()).GetAll().ToList();
+
+            command.CommandText = "SELECT * " +
+                                  "FROM [Animal] " +
+                                  " JOIN [Animal_Region] AS [AR] ON [AR].[AnimalId] = [Animal].[Id] " +
+                                  " JOIN [Region] ON [AR].[RegionId] = [Region].[Id] " +
+                                  "WHERE [Region].[Name] = @region";
+            command.Parameters.AddWithValue("region", region);
+
+            connection.Open();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    yield return Mapper(reader, familias);
+                }
+            }
+            connection.Close();
         }
 
         public bool Remove(int id)
