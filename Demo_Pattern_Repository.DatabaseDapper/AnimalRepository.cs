@@ -28,16 +28,23 @@ namespace Demo_Pattern_Repository.DatabaseDapper
         public IEnumerable<Animal> GetAll()
         {
             using SqlConnection connection = new SqlConnection(connectionString);
-            
+
             connection.Open();
-            foreach (Animal animal in connection.Query<Animal, Familia, Animal>(
-                "SELECT [Animal].[Id], [Animal].[Name], [Animal].[Domesticated], [Animal].[LifeExpectancy], [Animal].[FamiliaId], " +
-                "   [Familia].[Id], [Familia].[Name], [Familia].[Description] AS [Desc]" +
+
+            IEnumerable<Animal> animals = connection.Query<Animal, Familia, Animal>(
+                "SELECT [Animal].[Id], [Animal].[Name], [Animal].[Domesticated], " +
+                " [Animal].[LifeExpectancy], [Animal].[FamiliaId], " +
+                " [Familia].[Id], [Familia].[Name], [Familia].[Description] AS [Desc]" +
                 "FROM [Animal]" +
-                " JOIN [Familia] ON [Animal].[FamiliaId] = [Familia].[Id]", (animal, familia) => {
+                " JOIN [Familia] ON [Animal].[FamiliaId] = [Familia].[Id]",
+                (animal, familia) =>
+                {
                     animal.Familia = familia;
                     return animal;
-                }))
+                }
+            );
+
+            foreach (Animal animal in animals)
             {
                 yield return animal;
             }
@@ -59,18 +66,25 @@ namespace Demo_Pattern_Repository.DatabaseDapper
             using SqlConnection connection = new SqlConnection(connectionString);
 
             connection.Open();
-            foreach (Animal animal in connection.Query<Animal, Familia, Animal>(
-                "SELECT [Animal].[Id], [Animal].[Name], [Animal].[Domesticated], [Animal].[LifeExpectancy], [Animal].[FamiliaId], " +
-                "   [Familia].[Id], [Familia].[Name], [Familia].[Description] AS [Desc]" +
+
+            IEnumerable<Animal> animals = connection.Query<Animal, Familia, Animal>(
+                "SELECT [Animal].[Id], [Animal].[Name], [Animal].[Domesticated], " +
+                " [Animal].[LifeExpectancy], [Animal].[FamiliaId], " +
+                " [Familia].[Id], [Familia].[Name], [Familia].[Description] AS [Desc]" +
                 "FROM [Animal]" +
                 " JOIN [Familia] ON [Animal].[FamiliaId] = [Familia].[Id]" +
                 " JOIN [Animal_Region] AS [AR] ON [AR].[AnimalId] = [Animal].[Id] " +
                 " JOIN [Region] ON [AR].[RegionId] = [Region].[Id] " +
-                "WHERE [Region].[Name] = @Region"
-                                  , (animal, familia) => {
+                "WHERE [Region].[Name] = @Region",
+                (animal, familia) =>
+                {
                     animal.Familia = familia;
                     return animal;
-                }, new { Region = region}))
+                },
+                new { Region = region }
+            );
+
+            foreach (Animal animal in animals)
             {
                 yield return animal;
             }
