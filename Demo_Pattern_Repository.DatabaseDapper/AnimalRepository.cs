@@ -32,7 +32,8 @@ namespace Demo_Pattern_Repository.DatabaseDapper
             connection.Open();
 
             IEnumerable<Animal> animals = connection.Query<Animal, Familia, Animal>(
-                "SELECT [Animal].[Id], [Animal].[Name], [Animal].[Domesticated], " +
+                "SELECT [Animal].[Id], [Animal].[Name], " +
+                " [Animal].[Domesticated] AS [IsDomesticated], " +
                 " [Animal].[LifeExpectancy], [Animal].[FamiliaId], " +
                 " [Familia].[Id], [Familia].[Name], [Familia].[Description] AS [Desc]" +
                 "FROM [Animal]" +
@@ -68,7 +69,8 @@ namespace Demo_Pattern_Repository.DatabaseDapper
             connection.Open();
 
             IEnumerable<Animal> animals = connection.Query<Animal, Familia, Animal>(
-                "SELECT [Animal].[Id], [Animal].[Name], [Animal].[Domesticated], " +
+                "SELECT [Animal].[Id], [Animal].[Name], " +
+                " [Animal].[Domesticated] AS [IsDomesticated], " +
                 " [Animal].[LifeExpectancy], [Animal].[FamiliaId], " +
                 " [Familia].[Id], [Familia].[Name], [Familia].[Description] AS [Desc]" +
                 "FROM [Animal]" +
